@@ -11,11 +11,9 @@ Run the below command to compile and run this program.
 void toggle_every_kth_room(int *lights, int k)
 {
   // Code here
-  int mask = 0;
   for(int i = (k-1); i<16;(i+=k))
   {
-    mask = 1<<i;
-    *lights ^= mask; //XOR Equal to
+    *lights ^= (1<<i); //XOR Equal to
 
   }
 }
@@ -36,7 +34,7 @@ int get_mask()
     scanf("%d", &i);
     if(i==-1)
       break;
-    mask |= 1<<(i-1); //Or Equal to
+    mask |= (1<<(i-1)); //Or Equal to
   }
   return mask;
 }
@@ -63,7 +61,7 @@ int count_lights(int lights)
   // Code here
   for(int i = 0; i<16;i++)
   {
-    if((lights >> i) & i) //left shift, get i-th bit to lsb
+    if(lights * (1 << i)) //left shift, get i-th bit to lsb
     {
       c++;
     }
