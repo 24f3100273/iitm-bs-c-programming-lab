@@ -1,13 +1,14 @@
 # include<stdio.h>
-int prime_bad(int n)
+int prime(int n)
 {
     if (n<2)
     {
+        printf("%d is Neither Prime Nor Composite\n", n);
         return 0;
     }
     else
     {
-        for (int i=2; i*i < n; i++)
+        for (int i=2; (i*i)<= n; i++)
         {
             if (n%i == 0)
             {
@@ -21,7 +22,7 @@ int main()
 {
     int n, res;
     scanf("%d",&n);
-    res = prime_bad(n);
+    res = prime(n);
     if(res==0)
     {
         printf("False\n");

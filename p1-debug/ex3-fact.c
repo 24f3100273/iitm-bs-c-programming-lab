@@ -1,16 +1,19 @@
 #include<stdio.h>
-int n = 0;
-void fact(int n)
+
+int fact(int n)
 {
-    int i = 1;
-    for(; i <= n; i++)
-        n *= i;
+    int fact = 1;
+    while(n>0)
+    {
+        fact*=n;
+        n--;
+    }
+    return fact;
 }
 
 int main()
 {
-    fact(5);
-    printf("%d", n);
+    printf("%d", fact(5));
     return 0;
 }
 

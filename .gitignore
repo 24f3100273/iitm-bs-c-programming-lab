@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Outputs
+*/build/
+*/ex1-prime
+*/ex2-copy
+*/ex3-fact
+*/ex4-reverse
+
+*/matmul
+*/main
