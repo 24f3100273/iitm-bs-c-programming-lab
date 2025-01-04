@@ -1,4 +1,4 @@
-# include<stdio.h>
+#include <stdio.h>
 int prime(int n)
 {
     if (n<2)
