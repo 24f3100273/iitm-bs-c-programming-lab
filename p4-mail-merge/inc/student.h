@@ -19,7 +19,10 @@
  */
 typedef struct student
 {
-
+    char name[32];
+    char rollno[32];
+    int marks;
+    char grade;
 } student_t;
 
 // Implment the below functions in the student.c

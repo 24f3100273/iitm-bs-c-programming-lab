@@ -23,7 +23,7 @@
  */
 void print_student(student_t *s)
 {
-    printf("");
+    printf("%s Student with %s roll number has %d marks", s->name, s->rollno, s->marks);
 }
 
 // Task 3: Implement the compute_grade_function
@@ -43,7 +43,14 @@ void print_student(student_t *s)
  */
 void compute_grade(student_t *s)
 {
-    
+
+if (s->marks >= 90) s->grade = 'S';
+else if ( s->marks < 90 && s->marks >= 80)  s->grade = 'A';
+else if (s->marks < 80 && s->marks >= 70) s->grade = 'B';
+else if (s->marks < 70 && s->marks >= 60) s->grade = 'C';
+else if (s->marks < 60 && s->marks >= 50) s->grade = 'D';
+else if (s->marks < s->marks >= 40) s->grade = 'E';
+else s->grade = 'U';
 }
 
 // Task 4: Fill the ... parts in the get_student_data_from_csv function
@@ -58,22 +65,22 @@ int get_student_data_from_csv(char *filename, student_t **s_arr_ptr)
     // Uncomment the below and fill the necessary parts.
 
     // Get the number of lines in the file (find the required function from utils.h)
-    // int num = ...;
+     int num = file_get_n_lines(filename);
 
     // Dynamically allocate space for the students.
-    // *s_arr_ptr = malloc(...);
+    *s_arr_ptr = malloc(num * sizeof(student_t));
 
     // Open a file for reading
-    // FILE *f = fopen(filename, "r");
+     FILE *f = fopen(filename, "r");
 
-    // student_t *s_arr = *s_arr_ptr; // for simplifying notation.
-
-    // for (int i = 0; i < num; i++)
-    // {
-    //     student_t *s = s_arr + i;
-    //     // Read the attributes of s from csv
-    //     fscanf(f, "%[^,],%[^,],%d\n", ...);
-    //     compute_grade(s);
-    // }
-    // return num;
+     student_t *s_arr = *s_arr_ptr; // for simplifying notation.
+     
+     for (int i = 0; i < num; i++)
+     {
+         student_t *s = s_arr + i;
+         // Read the attributes of s from csv
+         fscanf(f, "%[^,],%[^,],%d\n", s->name, s->rollno, &(s->marks));
+         compute_grade(s);
+     }
+     return num;
 }

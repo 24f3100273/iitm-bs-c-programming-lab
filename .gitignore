@@ -60,6 +60,9 @@ dkms.conf
 
 */matmul
 */main
+*/mail-merge-results
+*/*/build
+*/out
 
 # Python venv
 */venv/

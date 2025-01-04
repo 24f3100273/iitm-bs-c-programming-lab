@@ -6,7 +6,8 @@
 #include "student.h"
 #include "utils.h"
 
-int main(int argc, char **argv)
+
+int main(int argc, char **argv) //dyn array of args
 {
     if (argc < 3)
     {
@@ -27,7 +28,15 @@ int main(int argc, char **argv)
     n_students = get_student_data_from_csv(filename, &students);
 
     // Task 4: Create the template from template.txt as a multiline c string.
-    char template[] = "..." ;
+    char template[] = 
+"\nTo,"
+"\n%s (roll no. %s)"
+"\nStudent of BS-ES course, IIT Madras\n\n"
+"\nDear %s,\n"
+"\nYou scored %d marks in the exam, and your grade is %c.\n"
+
+"\nSincerely,"
+"\nThe Dean\n";
 
     // Loop over all students compute grade and write to name.txt files
     for (int i = 0; i < n_students; i++)
@@ -36,14 +45,14 @@ int main(int argc, char **argv)
         student_t *s = &students[i];
 
         // Creating the output file path
-        snprintf(filename, 100, "%s/%s.txt", output_dir, s->rollno);
+        snprintf(filename, 100, "%s/%s.txt", output_dir, s->rollno, s->name, s->marks, s->grade);
 
         // Task 5: Print the template to the file using the file_printf macro
 
         // use file_printf macro (defined in utils.h) to format the template
         // check test/test_file_printf.c for usage example
+
         
-        // file_printf(...)
-            
+        file_printf(filename, template, &(s->name), &(s->rollno),&(s->name), s->marks, &(s->grade));
     }
 }
