@@ -11,6 +11,15 @@
 /// @param A 2D array of dimension DIMxDIM defined by the DIM macro.
 void read_mat(char *filename, float A[DIM][DIM])
 {
+    FILE* f = fopen(filename, "r");//read-only
+    for(int i = 0;i<DIM; i++)
+    {
+        for(int j = 0; j<DIM; j++)
+        {
+            fscanf(f, "%f", &A[i][j]);
+        }
+    }
+    fclose(f); //close the opened file
 }
 
 /**
@@ -24,6 +33,14 @@ void read_mat(char *filename, float A[DIM][DIM])
  */
 void print_mat(float A[DIM][DIM])
 {
+    for(int i = 0; i<DIM;i++)
+    {
+        for(int j = 0; j<DIM; j++)
+        {
+            printf("%f ", A[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 /// @brief Performs the matrix multiplication on Matrix A and B and saves the results to Matrix C
@@ -32,6 +49,8 @@ void print_mat(float A[DIM][DIM])
 /// @param C Output Matrix C
 void matmul(float A[DIM][DIM], float B[DIM][DIM], float C[DIM][DIM])
 {
+    
+
 }
 
 double gettime()
