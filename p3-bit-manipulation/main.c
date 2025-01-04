@@ -1,5 +1,4 @@
 #include <stdio.h>
-static int n = 16;
 /*
 Note:
   This is an interactive program in which
@@ -16,8 +15,9 @@ void toggle_every_kth_room(int *lights, int k)
   for(int i = (k-1); i<16;(i+=k))
   {
     mask = 1<<i;
+    *lights ^= mask; //XOR Equal to
+
   }
-  *lights ^= mask; //XOR Equal to
 }
 
 void toggle_even_rooms(int *lights)
@@ -37,9 +37,8 @@ int get_mask()
     if(i==-1)
       break;
     mask |= 1<<(i-1); //Or Equal to
-    return mask;
   }
-
+  return mask;
 }
 
 void turn_on_lights(int *lights)
@@ -49,7 +48,6 @@ void turn_on_lights(int *lights)
   //To turn the bits - "OR =" operation
   // To reset, "AND =" with Negation
   *lights |= mask;
-
 }
 
 void turn_off_lights(int *lights)
@@ -69,9 +67,8 @@ int count_lights(int lights)
     {
       c++;
     }
-    return c;
   }
-
+   return c;
 }
 
 void print_bin(int a)
